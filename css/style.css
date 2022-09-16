@@ -1,0 +1,56 @@
+/*
+ 
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAAXNSR0IArs4c6QAAABNJREFUGFdjZECA/4wMDAz/YXwAFyoCAQW9DlEAAAAASUVORK5CYII=
+*/
+body, html, #loading {
+	display:block;
+	width:100vw;
+	height:100vh;
+	background:#000;
+	color:#fff;
+	padding:0;
+	margin:0;
+}
+
+/*switch states */
+body main {
+	transition: opacity 2s;
+	opacity:0;
+}
+body.loaded main {
+	opacity:1;
+}
+body.loaded #loading {
+	display:none;
+}
+
+/* load elements */
+#loading > *{
+	display:block;
+	position:absolute;
+	top:45vh;
+	left:0;
+	height:10vh;
+}
+
+/* loading bar styling */
+#loading > *:nth-child(1) {
+	background: linear-gradient(to right, orange, red);
+	animation: loading infinite ease-out 1s,
+	flash infinite ease-out 1s;
+}
+#loading > *:nth-child(2) {
+	/* BASE64 here */
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAAXNSR0IArs4c6QAAABNJREFUGFdjZECA/4wMDAz/YXwAFyoCAQW9DlEAAAAASUVORK5CYII=);
+	width:100%;
+}
+/* animation */
+@-webkit-keyframes loading {
+	from { width:0; }
+	to { width:100%; }
+}
+@-webkit-keyframes flash {
+	from { opacity:1; }
+	50% { opacity:0.5; }
+	to { opacity:1; }
+}
